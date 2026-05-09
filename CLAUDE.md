@@ -11,6 +11,16 @@ Open-source civic software, built for the public good. GitHub org:
 [`PublicStackOrg`](https://github.com/PublicStackOrg). Default license is
 **AGPL-3.0** for every repo unless explicitly stated otherwise.
 
+## Vocabulary
+
+| Term | Meaning |
+|---|---|
+| **Public Service** | A deployable civic application — its own repo, its own AGPL license. e.g. Parking, Permits, 311. |
+| **internal service** / **backend service** | A microservice inside one Public Service. e.g. `api`, `worker`. |
+| **Contract** | A versioned schema one Public Service exposes to others. (Parking exposes `citations.v1`; Permits consumes it.) |
+| **Grid** | Shared backbone services (identity, payments, notifications, audit, document storage, accessibility) consumed by every Public Service via adapters. The Grid is a contract layer, not a deployed shared service. |
+| **`blueprint`** | The repo every Public Service is generated from. The template + spec. See `blueprint/docs/PLAN.md` for the source of truth. |
+
 ## Default tech stack
 
 Inferred from current repos — adjust per-repo as needed:
