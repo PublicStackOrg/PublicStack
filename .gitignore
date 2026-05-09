@@ -1,0 +1,17 @@
+# Ignore everything in this directory by default — every subdirectory here is
+# its own repo, and we don't want to track them from the parent.
+*
+
+# Allow-list the shared org-wide files this repo actually exists to hold.
+!.gitignore
+!.gitattributes
+!CLAUDE.md
+!README.md
+!PLAN.md
+!install.sh
+!update.sh
+!.claude
+!.claude/**
+
+# Never track local-only overrides even inside .claude/
+.claude/settings.local.json
