@@ -154,4 +154,20 @@ for repo_dir in "${ROOT_DIR}"/*/; do
   ignore_in_repo "${repo_dir}"
 done
 
+# ---------------------------------------------------------------------------
+# 4. Install the publicstack CLI (Phase 3 of blueprint/docs/PLAN.md).
+# ---------------------------------------------------------------------------
+if [[ -d "${ROOT_DIR}/blueprint/cli" ]]; then
+  if command -v pipx >/dev/null 2>&1; then
+    info "installing publicstack CLI via pipx"
+    if pipx install --force "${ROOT_DIR}/blueprint/cli" >/dev/null; then
+      ok "publicstack CLI installed/updated"
+    else
+      warn "pipx install of publicstack failed (continuing)"
+    fi
+  else
+    warn "pipx not found — skipping publicstack CLI install (install pipx and re-run)"
+  fi
+fi
+
 info "done. Open any repo and Claude Code should see the shared config."
