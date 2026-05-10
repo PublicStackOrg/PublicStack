@@ -170,4 +170,18 @@ if [[ -d "${ROOT_DIR}/blueprint/cli" ]]; then
   fi
 fi
 
+# ---------------------------------------------------------------------------
+# 5. Install the publicstack-contracts CLI (Phase 4 of blueprint/docs/PLAN.md).
+# ---------------------------------------------------------------------------
+if [[ -d "${ROOT_DIR}/blueprint/contracts/tooling" ]]; then
+  if command -v pipx >/dev/null 2>&1; then
+    info "installing publicstack-contracts CLI via pipx"
+    if pipx install --force "${ROOT_DIR}/blueprint/contracts/tooling" >/dev/null; then
+      ok "publicstack-contracts CLI installed/updated"
+    else
+      warn "pipx install of publicstack-contracts failed (continuing)"
+    fi
+  fi
+fi
+
 info "done. Open any repo and Claude Code should see the shared config."
