@@ -184,4 +184,19 @@ if [[ -d "${ROOT_DIR}/blueprint/contracts/tooling" ]]; then
   fi
 fi
 
+# ---------------------------------------------------------------------------
+# 6. Install the publicstack-compliance CLI (Phase 5 of blueprint/docs/PLAN.md).
+# ---------------------------------------------------------------------------
+if [[ -d "${ROOT_DIR}/blueprint/compliance" ]]; then
+  if command -v pipx >/dev/null 2>&1; then
+    info "installing publicstack-compliance CLI via pipx"
+    if pipx install --force "${ROOT_DIR}/blueprint/compliance" >/dev/null; then
+      ok "publicstack-compliance CLI installed/updated"
+      warn "for accessibility checks, also run: playwright install chromium"
+    else
+      warn "pipx install of publicstack-compliance failed (continuing)"
+    fi
+  fi
+fi
+
 info "done. Open any repo and Claude Code should see the shared config."
